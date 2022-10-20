@@ -1,0 +1,104 @@
+openapi: 3.0.2
+info:
+  title: Jumia
+  version: "1.0"
+servers:
+- url: https://api.server.test/v1
+paths:
+  /product/{sku}:
+    get:
+      description: Get a product by SKU
+      parameters:
+      - explode: false
+        in: path
+        name: sku
+        required: true
+        schema:
+          $ref: '#/components/schemas/Sku'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: A product object
+      summary: Get a product by SKU
+    patch:
+      description: If the product is available in the database, the item will be reduced
+        by the number consumed. Otherwise it will return an error stating that the
+        product is unavailable
+      parameters:
+      - explode: false
+        in: path
+        name: sku
+        required: true
+        schema:
+          $ref: '#/components/schemas/Sku'
+        style: simple
+      responses:
+        "200":
+          description: OK
+      summary: Consume a product. Checks if the product is available first
+  /products:
+    patch:
+      description: provides an endpoint for bulk updates using a CSV file. If a product
+        doesn't exist, it will be created
+      requestBody:
+        $ref: '#/components/requestBodies/inline_object'
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  format: binary
+                  type: string
+              type: object
+      responses:
+        "200":
+          description: OK
+      summary: allows bulk update using CSV file
+components:
+  parameters:
+    Sku:
+      explode: false
+      in: path
+      name: sku
+      required: true
+      schema:
+        $ref: '#/components/schemas/Sku'
+      style: simple
+  requestBodies:
+    inline_object:
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/inline_object'
+  schemas:
+    Sku:
+      description: The product sku
+      example: 9befa247cd11
+      type: string
+    Product:
+      example:
+        country: country
+        name: name
+        sku: 9befa247cd11
+      properties:
+        sku:
+          description: The product sku
+          example: 9befa247cd11
+          type: string
+        name:
+          description: The product name
+          type: string
+        country:
+          description: The product country
+          type: string
+      type: object
+    inline_object:
+      properties:
+        file:
+          format: binary
+          type: string
+      type: object

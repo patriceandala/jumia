@@ -1,0 +1,84 @@
+openapi: "3.0.2"
+info:
+  title: Jumia
+  version: "1.0"
+servers:
+  - url: https://api.server.test/v1
+paths:
+  /product/{sku}:
+    get:
+      summary: Get a product by SKU
+      description: Get a product by SKU
+      parameters:
+        - $ref: '#/components/parameters/Sku'
+      responses:
+        '200':
+          description: A product object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+
+    patch:
+      summary: Consume a product. Checks if the product is available first
+      description: If the product is available in the database, the item will be reduced by the number consumed. Otherwise it will return an error stating that the product is unavailable
+      #      operationId:
+      parameters:
+        - $ref: '#/components/parameters/Sku'
+      responses:
+        '200':
+          description: OK
+  /products:
+    patch:
+      summary: allows bulk update using CSV file
+      description: provides an endpoint for bulk updates using a CSV file. If a product doesn't exist, it will be created
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                # 'file' will be the field name in this multipart request
+                file:
+                  type: string
+                  format: binary
+
+      responses:
+        '200':
+          description: OK
+#  /upload:
+#    post:
+#      summary: Uploads a file.
+#        consumes:
+#          - multipart/form-data
+#        parameters:
+#          - in: formData
+#            name: upfile
+#            type: file
+#            description: The file to upload.
+
+components:
+  schemas:
+    Sku:
+      type: string
+      example: 9befa247cd11
+      description: The product sku
+    Product:
+      type: object
+      properties:
+        sku:
+          $ref: '#/components/schemas/Sku'
+        name:
+          type: string
+          description: The product name
+        country:
+          type: string
+          description: The product country
+  parameters:
+    Sku:
+      in: path
+      name: sku
+      required: true
+      schema:
+        $ref: '#/components/schemas/Sku'
+

@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  postgres:
+    container_name: postgres15
+    image: postgres:15.0-alpine
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=secret
+
+#  jumia-api:
+#    container_name: jumia-api
+#    depends_on:
+#      - postgres
+#    build:
+#      context: .
+##      args:
+##        GITHUB_TOKEN: ${GITHUB_TOKEN}
+##        VERSION: "development"
+#    ports:
+#      - "8085:8085"
+#    restart: unless-stopped
+#    environment:
+#      LOG_LEVEL: "debug"
+
