@@ -4,7 +4,7 @@ The following is a backend API by Patrice Opiyo built for the Jumia team.
 
 ## Tools used
 Golang
-Mysql
+Postgres
 Swagger
 Docker
 
