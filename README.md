@@ -1,7 +1,6 @@
 # JUMIA API
-# Storefront-Backend
-
-The following is a backend service by Patrice Opiyo built for the Jumia team.
+ 
+The following is a backend API by Patrice Opiyo built for the Jumia team.
 
 ## Tools used
 Golang
@@ -15,7 +14,7 @@ Docker
 I've defined the following endpoints:
 
 * /v1/product/{sku} [GET]
-* /v1/product/{sku} [GET] -Consume a product. Checks if the product is available first
+* /v1/product/{sku} [PATCH] -Consume a product. Checks if the product is available first
 * /v1/products/  [PATCH]-allows bulk update using CSV file
  
 
