@@ -11,8 +11,6 @@ package openapi
 
 import (
 	"context"
-	"errors"
-	"net/http"
 	"os"
 )
 
@@ -32,8 +30,6 @@ func (s *DefaultApiService) ProductSkuGet(ctx context.Context, sku string) (Impl
 	// TODO - update ProductSkuGet with the required logic for this service method.
 	// Add api_default_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	//TODO: Uncomment the next line to return response Response(200, Product{}) or use other options such as http.Ok ...
-
 	body := Product{
 		sku,
 		"Some Product",
@@ -50,10 +46,15 @@ func (s *DefaultApiService) ProductSkuPatch(ctx context.Context, sku string) (Im
 	// TODO - update ProductSkuPatch with the required logic for this service method.
 	// Add api_default_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	//TODO: Uncomment the next line to return response Response(200, {}) or use other options such as http.Ok ...
-	//return Response(200, nil),nil
+	body := Product{
+		sku,
+		"Some Product",
+		"Kenya",
+	}
 
-	return Response(http.StatusNotImplemented, nil), errors.New("ProductSkuPatch method not implemented")
+	return Response(200, body), nil
+
+	//return Response(http.StatusNotImplemented, nil), errors.New("ProductSkuPatch method not implemented")
 }
 
 // ProductsPatch - allows bulk update using CSV file
@@ -61,8 +62,12 @@ func (s *DefaultApiService) ProductsPatch(ctx context.Context, file *os.File) (I
 	// TODO - update ProductsPatch with the required logic for this service method.
 	// Add api_default_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	//TODO: Uncomment the next line to return response Response(200, {}) or use other options such as http.Ok ...
-	//return Response(200, nil),nil
+	body := Product{
+		"",
+		"Some Product",
+		"Kenya",
+	}
+	return Response(200, body), nil
 
-	return Response(http.StatusNotImplemented, nil), errors.New("ProductsPatch method not implemented")
+	//return Response(http.StatusNotImplemented, nil), errors.New("ProductsPatch method not implemented")
 }
