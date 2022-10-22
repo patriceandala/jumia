@@ -38,8 +38,6 @@ func (s *DefaultApiService) ProductSkuGet(ctx context.Context, sku string) (Impl
 		"Kenya",
 	}
 
-	//body := db.CreateProductParams{}
-
 	return Response(200, body), nil
 
 	//return Response(http.StatusNotImplemented, nil), errors.New("ProductSkuGet method not implemented")
