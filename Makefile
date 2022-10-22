@@ -1,14 +1,18 @@
+createMigrationFile:
+	migrate create -ext sql -dir db/migration seq init_schema
 
 migrate:
-	migrate -path db/migrations/ -database postgresql://root:secret@localhost:5433/jumiaDB?sslmode=disable -verbose up
-	#docker run  migrate/migrate -path db/migrations/ -database postgresql://root:secret@localhost:5433/jumiaDB?sslmode=disable -verbose up
+	migrate -path db/migration/ -database postgresql://root:secret@localhost:5433/jumiaDB?sslmode=disable -verbose up
 
 up:
 	docker-compose up
 
 down:
 	docker-compose down
-	docker run -v migrations:/migrations --network host migrate/migrate  -path=/migrations/ -database postgres://root:secret@localhost:5432/jumiaDB down 2
+	docker run -v migrations:/migrations --network host migrate/migrate  -path=/migrations/ -database postgres://root:secret@localhost:5433/jumiaDB down 2
+
+sqlc:
+	sqlc generate
 
 .PHONY: createDb
 createDb:

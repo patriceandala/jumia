@@ -30,6 +30,8 @@ func (s *DefaultApiService) ProductSkuGet(ctx context.Context, sku string) (Impl
 	// TODO - update ProductSkuGet with the required logic for this service method.
 	// Add api_default_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
+	//todo add postgres logic
+
 	body := Product{
 		sku,
 		"Some Product",
@@ -45,6 +47,8 @@ func (s *DefaultApiService) ProductSkuGet(ctx context.Context, sku string) (Impl
 func (s *DefaultApiService) ProductSkuPatch(ctx context.Context, sku string) (ImplResponse, error) {
 	// TODO - update ProductSkuPatch with the required logic for this service method.
 	// Add api_default_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	//todo add postgres logic
 
 	body := Product{
 		sku,
@@ -62,6 +66,7 @@ func (s *DefaultApiService) ProductsPatch(ctx context.Context, file *os.File) (I
 	// TODO - update ProductsPatch with the required logic for this service method.
 	// Add api_default_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
+	//todo add postgres logic
 	body := Product{
 		"",
 		"Some Product",
