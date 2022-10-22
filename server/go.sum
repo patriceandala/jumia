@@ -1,2 +1,4 @@
 github.com/gorilla/mux v1.8.0 h1:i40aqfkR1h2SlN9hojwV5ZA91wcXFOvkdNIeFDP5koI=
 github.com/gorilla/mux v1.8.0/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
+github.com/patriceandala/jumia v0.0.0-20221022082019-f28d874937bc h1:zzZ/Crg5bEAL7bVfPXOamXfleWw2ALmynX26CiiQ44Q=
+github.com/patriceandala/jumia v0.0.0-20221022082019-f28d874937bc/go.mod h1:rOFUbfAh3DlreTwQ3Vs0QQf2abO+RfFOFDhrEWwNnZo=
