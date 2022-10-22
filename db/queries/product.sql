@@ -1,5 +1,5 @@
 -- name: CreateProduct :one
-INSERT INTO Products
+INSERT INTO products
     (sku, name, country)
 VALUES
     ($1,$2, $3)

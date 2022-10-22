@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS "Products"
+CREATE TABLE IF NOT EXISTS products
 (
     "sku"     varchar PRIMARY KEY,
     "name"    varchar NOT NULL,
