@@ -23,5 +23,7 @@ I've defined the following endpoints:
 
 There are few tools that are required to run this server locally i.e: Go, docker, and docker-compose.
 
-If you already have this installed you can run `make server` on jumia directory, this command will run docker-compose up and create the database then migrate the tables into the db
+If you already have this installed you can run `make server` on jumia directory, this command will run docker-compose up and create the database then migrate the tables into the db.
+
+You can then access the API on port 8085
  
