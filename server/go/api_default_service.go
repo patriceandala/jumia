@@ -12,8 +12,6 @@ package openapi
 import (
 	"context"
 	"os"
-
-	db "github.com/patriceandala/jumia/db/sqlc"
 )
 
 // DefaultApiService is a service that implents the logic for the DefaultApiServicer
@@ -34,13 +32,13 @@ func (s *DefaultApiService) ProductSkuGet(ctx context.Context, sku string) (Impl
 
 	//todo add postgres logic
 
-	//body := Product{
-	//	sku,
-	//	"Some Product",
-	//	"Kenya",
-	//}
+	body := Product{
+		sku,
+		"Some Product",
+		"Kenya",
+	}
 
-	body := db.Product{}
+	//body := db.CreateProductParams{}
 
 	return Response(200, body), nil
 
