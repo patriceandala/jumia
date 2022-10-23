@@ -1,13 +1,10 @@
 FROM golang:1.19.2-alpine3.16 AS builder
 WORKDIR /go/src
-COPY server/go ./go
-COPY server/main.go .
-COPY server/go.mod .
-COPY server/go.sum .
+COPY . .
 
 
 ARG VERSION="latest"
-RUN CGO_ENABLED=0 go build -ldflags="-w -s -X main.version=${VERSION}" -o ./dist/jumia .
+RUN CGO_ENABLED=0 go build -ldflags="-w -s -X main.version=${VERSION}" -o ./dist/jumia ./server
 
 FROM scratch
 
