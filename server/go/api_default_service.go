@@ -26,21 +26,21 @@ import (
 type DefaultApiService struct {
 }
 
-const (
-	dbDriver = "postgres"
-	dbSource = "postgresql://root:secret@postgres15:5433/jumia?sslmode=disable"
-)
-
-var queries *db.Queries
-
-func init() {
-	conn, err := sql.Open(dbDriver, dbSource)
-	if err != nil {
-		log.Fatal("cannot connect to db:", err)
-	}
-
-	queries = db.New(conn)
-}
+//const (
+//	dbDriver = "postgres"
+//	dbSource = "postgresql://root:secret@postgres:5433/jumia?sslmode=disable"
+//)
+//
+//var queries *db.Queries
+//
+//func init() {
+//	conn, err := sql.Open(dbDriver, dbSource)
+//	if err != nil {
+//		log.Fatal("cannot connect to db:", err)
+//	}
+//
+//	queries = db.New(conn)
+//}
 
 // NewDefaultApiService creates a default api service
 func NewDefaultApiService() DefaultApiServicer {
@@ -51,6 +51,19 @@ func NewDefaultApiService() DefaultApiServicer {
 func (s *DefaultApiService) ProductSkuGet(ctx context.Context, sku string) (ImplResponse, error) {
 	// TODO - update ProductSkuGet with the required logic for this service method.
 	// Add api_default_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	const (
+		dbDriver = "postgres"
+		dbSource = "postgresql://root:secret@postgres:5432/jumia?sslmode=disable"
+	)
+
+	//conn, err := sql.Open("postgres", "host='postgres' port=5432 user=root dbname='jumia' password='secret'")
+	conn, err := sql.Open(dbDriver, dbSource)
+	if err != nil {
+		log.Fatal("cannot connect to db:", err)
+	}
+	var queries *db.Queries
+	queries = db.New(conn)
 
 	product, err := queries.GetProduct(ctx, sku)
 	if err != nil {

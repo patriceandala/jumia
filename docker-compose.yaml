@@ -9,11 +9,13 @@ services:
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=secret
+    networks:
+      - local
+    env_file:
+      - docker.env
 
   jumia-api:
     container_name: jumia-api
-    depends_on:
-      - postgres
     build:
       context: .
 #      args:
@@ -21,7 +23,13 @@ services:
 #        VERSION: "development"
     ports:
       - "8085:8085"
+    depends_on:
+      - postgres
     restart: unless-stopped
     environment:
       LOG_LEVEL: "debug"
-
+    networks:
+      - local
+networks:
+  local:
+    driver: bridge
